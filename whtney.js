@@ -40,6 +40,8 @@ window.addEventListener('scroll', function() {
     const scrollPosition = window.scrollY;
 
     const logoDiv = document.getElementById('logo-set');
+    const navDiv = document.getElementById('nav');
+    console.log(navDiv);
 
     if (scrollPosition > logoDiv.offsetHeight) { // 여기에 스크롤이 어느 정도 지나면 고정되어야 하는 위치 설정
         stickyDiv.style.position = 'fixed';
@@ -49,8 +51,12 @@ window.addEventListener('scroll', function() {
         stickyDiv.style.width = `calc(100% - ${stickyDiv.style.left} - ${stickyDiv.style.right})`;
         stickyDiv.style.zIndex = '111';
 
+        navDiv.style.marginTop = `calc(${navDiv.offsetHeight}px * 1.4)`;   
     } else {
         stickyDiv.style.position = 'sticky'; // 또는 원하는 기본 위치로 변경
         stickyDiv.style.width = '100%';
+            if (scrollPosition < logoDiv.offsetHeight) {
+                navDiv.style.marginTop = '0';
+            }   
     }
 });
