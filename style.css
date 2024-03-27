@@ -150,11 +150,13 @@ polyline {
 
 
 .inner-image {
-    left: 129.654px;
+    position: fixed;
+    top: 40px;
     right: auto;
     width: 540.691px;
     height: 90.7581px;
     display: block;
+    z-index: 120;
 }
 
 
@@ -183,9 +185,12 @@ polyline {
     padding: 14px 0 14px 0;
     border-bottom: 2px solid var(--black);
     background: var(--white);
-    
     /* position: sticky;
     top: 0px; */
+}
+
+.mini-header-left {
+    font-weight: 800;
 }
 
 .mini-header-right > span {

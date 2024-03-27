@@ -16,8 +16,6 @@ const errMsg = {
 };
 
 // header w responseible
-const w_Full = document.querySelector('#w polyline');
-w_Full.setAttribute('width', '100%');
 
 
 idInputEl.addEventListener('change', () => {
@@ -84,4 +82,49 @@ cancel.addEventListener('click', function(event) {
     anouncement.style.display = 'none'; // 해당 요소를 숨깁니다.
 });
 
+// 헤더..
+//이미지 투명도
+window.addEventListener('scroll', function() {
+    var scrollPosition = window.scrollY;
+    var image = document.querySelector('.inner-image');
+    var opacity;
+    const miniHeader = document.querySelector('#miniHeader');
 
+    if (scrollPosition >= 280) {
+        opacity = 0; // Set opacity to 0 if scroll position is greater than or equal to 280
+        miniHeader.style.visibility = 'visible'; // Hide miniHeader
+    } else if (scrollPosition >= 80) {
+        opacity = 1 - ((scrollPosition - 80) / 155); // Adjust fading speed from scroll position 80
+        miniHeader.style.visibility = 'visible'; // Show miniHeader
+    } else {
+        opacity = 1; // Keep opacity 1 if scroll position is less than 80
+        miniHeader.style.visibility = 'hidden'; // Hide miniHeader
+    }
+
+    if (opacity >= 0) {
+        image.style.opacity = opacity;
+    }
+});
+
+
+
+
+
+//크기 줄어듬
+window.addEventListener('scroll', function() {
+    var scrollPosition = window.scrollY;
+    var image = document.querySelector('.inner-image');
+    var initialWidth = 540.691; // 초기 이미지의 너비
+    var initialHeight = 90.7581; // 초기 이미지의 높이
+    var scaleFactor = 1.5; // 이미지 크기 감소 비율 (0.8은 80%로 축소하는 것을 의미)
+
+    // 스크롤 위치에 따라 이미지 크기를 조절
+    var newWidth = initialWidth - (scrollPosition * scaleFactor);
+    var newHeight = initialHeight - (scrollPosition * scaleFactor * (initialHeight / initialWidth));
+
+    // 이미지가 너무 작아지지 않도록 최소 크기 설정
+    if (newWidth > 0 && newHeight > 0) {
+        image.style.width = newWidth + 'px';
+        image.style.height = newHeight + 'px';
+    }
+});
