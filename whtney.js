@@ -5,6 +5,7 @@ const account = {
     id: null // 이메일 값 저장
 };
 
+
 // 에러 메세지 객체
 const errMsg = {
     id: { 
@@ -13,6 +14,11 @@ const errMsg = {
         fail: "Enter a email address"
     }
 };
+
+// header w responseible
+const w_Full = document.querySelector('#w polyline');
+w_Full.setAttribute('width', '100%');
+
 
 idInputEl.addEventListener('change', () => {
     const idRegExp =  /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[a-zA-Z]{2,}$/; // 6~20자의 영문 소문자와 숫자
@@ -38,11 +44,11 @@ registeringAccount.addEventListener('click', () => {
 window.addEventListener('scroll', function() {
     const stickyDiv = document.getElementById('headerMenu');
     const scrollPosition = window.scrollY;
-
+    
     const logoDiv = document.getElementById('logo-set');
     const navDiv = document.getElementById('nav');
     console.log(navDiv);
-
+    
     if (scrollPosition > logoDiv.offsetHeight) { // 여기에 스크롤이 어느 정도 지나면 고정되어야 하는 위치 설정
         stickyDiv.style.position = 'fixed';
         stickyDiv.style.top = '0';
@@ -50,14 +56,32 @@ window.addEventListener('scroll', function() {
         stickyDiv.style.right = '8rem';
         stickyDiv.style.width = `calc(100% - ${stickyDiv.style.left} - ${stickyDiv.style.right})`;
         stickyDiv.style.zIndex = '111';
-
+        
         navDiv.style.marginTop = `calc(${navDiv.offsetHeight}px * 1.4)`;   
     } else {
         stickyDiv.style.position = 'sticky'; // 또는 원하는 기본 위치로 변경
         stickyDiv.style.width = '100%';
-            if (scrollPosition < logoDiv.offsetHeight) {
-                navDiv.style.marginTop = '0';
-            }   
+        if (scrollPosition < logoDiv.offsetHeight) {
+            navDiv.style.marginTop = '0';
+        }   
     }
 });
+
+
+//anouncement
+const anouncement = document.querySelector('#an');
+const cancel = document.querySelector('#an-cancle');
+
+anouncement.style.left = '8rem';
+anouncement.style.right = '8rem';
+
+anouncement.style.width = 
+    `calc(100% - ${anouncement.style.left} - ${anouncement.style.right})`;
+
+
+cancel.addEventListener('click', function(event) {
+    event.preventDefault(); // 링크의 기본 동작을 중단합니다.
+    anouncement.style.display = 'none'; // 해당 요소를 숨깁니다.
+});
+
 
