@@ -83,7 +83,7 @@ cancel.addEventListener('click', function(event) {
 
 // 헤더..
 
-//이미지 투명도
+//이미지 투명도 image=휘트니로고 mimiHeader는 워드마크 로고
 window.addEventListener('scroll', function() {
     var scrollPosition = window.scrollY;
     var image = document.querySelector('.inner-image');

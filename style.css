@@ -109,12 +109,12 @@ header {
 }
 
 polyline {
-    vector-effect: non-scaling-stroke;
+    /* vector-effect: non-scaling-stroke; */
     stroke-width: 2;
     stroke-miterlimit: 80;
     stroke-linejoin: miter;
     stroke-linecap: butt;
-    position: fixed;
+    position: inherit;
 }
 
 .logo-set {
@@ -271,6 +271,10 @@ a:hover {
     background-color: #FF971D;
 }
 
+video {
+    width: 100%;
+    object-fit: cover;
+}
 
 .card-btn {
     display: flex;
@@ -519,6 +523,7 @@ footer {
     color: var(--black);
     border: 1px solid var(--black);
     border-radius: 0;
+    appearance: none;
     -webkit-appearance: none;
     width: 16px;
     height: 16px;
