@@ -15,9 +15,8 @@ const errMsg = {
     }
 };
 
-// header w responseible
 
-
+//이메일 검증
 idInputEl.addEventListener('change', () => {
     const idRegExp =  /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[a-zA-Z]{2,}$/; // 6~20자의 영문 소문자와 숫자
     if(idRegExp.test(idInputEl.value)) { // 유효성 검사 성공
@@ -83,6 +82,10 @@ cancel.addEventListener('click', function(event) {
 });
 
 // 헤더..
+
+// header w responseible
+
+
 //이미지 투명도
 window.addEventListener('scroll', function() {
     var scrollPosition = window.scrollY;
@@ -107,6 +110,25 @@ window.addEventListener('scroll', function() {
 });
 
 
+//poly line
+
+window.addEventListener('scroll', function() {
+    // 스크롤 위치에 따라 새로운 polyline의 높이를 계산
+    var newHeight = 100 - (window.scrollY * 0.5); // 스크롤 속도에 따라 조절하려면 비율을 조정할 수 있습니다.
+
+    // 특정 point의 y값을 0에 가까워지게 조절
+    var newY = 97.71428571428571 - (window.scrollY * 1); // 스크롤 속도에 따라 조절하려면 비율을 조정할 수 있습니다.
+
+    // polyline 요소 가져오기
+    var polyline = document.querySelector('polyline');
+
+    // polyline의 points 속성을 새로운 값으로 업데이트
+    polyline.setAttribute('points', '0,0 0,' + newHeight + ' 59.7548828125,0 59.7548828125,' + newY + ' 100,0');
+
+    // polyline의 위치를 상단에 고정
+    polyline.setAttribute('style', 'position: fixed !important; top: 0 !important;');
+});
+
 
 
 
@@ -128,3 +150,13 @@ window.addEventListener('scroll', function() {
         image.style.height = newHeight + 'px';
     }
 });
+
+
+// polyline 요소 가져오기
+const polyline = document.querySelector('polyline');
+
+polyline.style.left = '8rem';
+polyline.style.right = '8rem';
+
+polyline.style.width = 
+    `calc(100% - ${polyline.style.left} - ${polyline.style.right})`;
