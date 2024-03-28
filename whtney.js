@@ -83,9 +83,6 @@ cancel.addEventListener('click', function(event) {
 
 // 헤더..
 
-// header w responseible
-
-
 //이미지 투명도
 window.addEventListener('scroll', function() {
     var scrollPosition = window.scrollY;
@@ -110,14 +107,14 @@ window.addEventListener('scroll', function() {
 });
 
 
-//poly line
+//poly line 점 옮기기
 
 window.addEventListener('scroll', function() {
     // 스크롤 위치에 따라 새로운 polyline의 높이를 계산
-    var newHeight = 100 - (window.scrollY * 0.5); // 스크롤 속도에 따라 조절하려면 비율을 조정할 수 있습니다.
+    var newHeight = 100 - (window.scrollY * 0.35); // 스크롤 속도에 따라 조절하려면 비율을 조정할 수 있습니다.
 
     // 특정 point의 y값을 0에 가까워지게 조절
-    var newY = 97.71428571428571 - (window.scrollY * 1); // 스크롤 속도에 따라 조절하려면 비율을 조정할 수 있습니다.
+    var newY = 97.71428571428571 - (window.scrollY * 0.4); // 스크롤 속도에 따라 조절하려면 비율을 조정할 수 있습니다.
 
     // polyline 요소 가져오기
     var polyline = document.querySelector('polyline');
@@ -132,7 +129,8 @@ window.addEventListener('scroll', function() {
 
 
 
-//크기 줄어듬
+//휘트니 로고 크기 줄어듬
+
 window.addEventListener('scroll', function() {
     var scrollPosition = window.scrollY;
     var image = document.querySelector('.inner-image');
@@ -152,11 +150,29 @@ window.addEventListener('scroll', function() {
 });
 
 
-// polyline 요소 가져오기
-const polyline = document.querySelector('polyline');
+//polyline 여백 맞추기
+const svgPolyline = document.querySelector('#w');
 
-polyline.style.left = '8rem';
-polyline.style.right = '8rem';
+svgPolyline.style.left = '8rem';
+svgPolyline.style.right = '8rem';
 
-polyline.style.width = 
-    `calc(100% - ${polyline.style.left} - ${polyline.style.right})`;
+svgPolyline.style.width = 
+    `calc(100% - ${svgPolyline.style.left} - ${svgPolyline.style.right})`;
+
+//폴리라인 투명도 주기
+window.addEventListener('scroll', function() {
+    var scrollPosition = window.scrollY;
+    var opacity;
+
+    if (scrollPosition >= 280) {
+        svgPolyline.style.opacity - 0;
+    } else if (scrollPosition >= 80) {
+        opacity = 1 - ((scrollPosition - 80) / 155); // Adjust fading speed from scroll position 80
+    } else {
+        opacity = 1; // Keep opacity 1 if scroll position is less than 80
+    }
+
+    if (opacity >= 0) {
+        svgPolyline.style.opacity = opacity;
+    }
+});

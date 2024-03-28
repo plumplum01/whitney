@@ -104,6 +104,10 @@ header {
     height: auto !important;
 }
 
+.header-wrap {
+    height: 280px;
+}
+
 polyline {
     vector-effect: non-scaling-stroke;
     stroke-width: 2;
