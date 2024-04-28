@@ -90,21 +90,27 @@ window.addEventListener('scroll', function() {
     var opacity;
     const miniHeader = document.querySelector('#miniHeader');
 
-    if (scrollPosition >= 280) {
+    if (scrollPosition >= 250) {
         opacity = 0; // Set opacity to 0 if scroll position is greater than or equal to 280
-        miniHeader.style.visibility = 'visible'; // Hide miniHeader
+        miniHeader.style.opacity = 1;
+        miniHeader.style.visibility = 'visible';
     } else if (scrollPosition >= 80) {
         opacity = 1 - ((scrollPosition - 80) / 155); // Adjust fading speed from scroll position 80
-        miniHeader.style.visibility = 'visible'; // Show miniHeader
+        miniHeader.style.opacity = ((scrollPosition - 80) / 155);
+        miniHeader.style.visibility = 'visible';
     } else {
         opacity = 1; // Keep opacity 1 if scroll position is less than 80
-        miniHeader.style.visibility = 'hidden'; // Hide miniHeader
+        miniHeader.style.opacity = 0;
     }
-
+    
     if (opacity >= 0) {
         image.style.opacity = opacity;
     }
 });
+
+// miniHeader.style.visibility = 'visible'; // Hide miniHeader
+// miniHeader.style.visibility = 'visible'; // Show miniHeader
+// miniHeader.style.visibility = 'hidden'; // Hide miniHeader
 
 
 //poly line 점 옮기기
